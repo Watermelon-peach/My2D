@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyHItBox
   - 
   - 
   - 
@@ -44,14 +44,17 @@ TagManager:
   - name: TileMap
     uniqueID: 2951599295
     locked: 0
+  - name: Enemy
+    uniqueID: 3262006599
+    locked: 0
   - name: Player
     uniqueID: 2364194343
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Foreground
     uniqueID: 4111771439
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   m_RenderingLayers:
   - Default

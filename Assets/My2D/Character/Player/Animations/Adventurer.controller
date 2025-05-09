@@ -208,7 +208,8 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 4720268505151354697}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
@@ -786,6 +787,23 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &4720268505151354697
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f62a39f76c5e14ba3f813efd4f5ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolName: CannotMove
+  updateOnState: 0
+  updateOnStateMachine: 1
+  valueEnter: 1
+  valueExit: 0
 --- !u!1102 &5633799482674955915
 AnimatorState:
   serializedVersion: 6
@@ -891,23 +909,23 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -4832619603431002513}
-    second:
-    - {fileID: -7690730004372856020}
-  - first: {fileID: -6319793200013120947}
-    second:
-    - {fileID: 3040824486839692291}
   - first: {fileID: -5181728436530525943}
     second:
     - {fileID: 7954354228971772676}
     - {fileID: -1757715318130364171}
     - {fileID: -6407695241192589388}
+  - first: {fileID: -6319793200013120947}
+    second:
+    - {fileID: 3040824486839692291}
+  - first: {fileID: -4832619603431002513}
+    second:
+    - {fileID: -7690730004372856020}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 730, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 5633799482674955915}
+  m_DefaultState: {fileID: 1916726450934757032}
 --- !u!1101 &7777372814969267440
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
