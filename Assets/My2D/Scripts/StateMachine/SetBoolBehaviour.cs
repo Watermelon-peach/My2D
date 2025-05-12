@@ -4,7 +4,7 @@ namespace My2D
 {
     //Bool형 타입 파라미터 변수를 관리하는 클래스
     //상태(상태머신)에 들어갈 때와 나올때 값을 설정해준다
-    public class SetBoolBehavior : StateMachineBehaviour
+    public class SetBoolBehaviour : StateMachineBehaviour
     {
         #region Variables
         //값을 설정할 파라미터 이름
