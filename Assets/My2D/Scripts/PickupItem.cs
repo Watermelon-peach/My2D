@@ -1,0 +1,65 @@
+using UnityEngine;
+
+namespace My2D
+{
+    //떨어진 아이템을 픽업하면 아이템 효과를 나타낸다
+    //아이템 효과: Health 충전
+    //필드에서 아이템이 회전한다
+    public class PickupItem : MonoBehaviour
+    {
+        #region Variables
+        //회전 속도 - y축 기준으로 회전
+        private Vector3 spinRotateSpeed = new Vector3(0f, 180f, 0f);
+
+        //Health 충전
+        [SerializeField] private float restoreHealth = 30f;
+
+        private AudioSource pickupSource;
+        #endregion
+
+        #region Unity Event Method
+        private void Awake()
+        {
+            //참조
+            pickupSource = GetComponent<AudioSource>();
+        }
+        private void Update()
+        {
+            //회전
+            transform.eulerAngles += spinRotateSpeed * Time.deltaTime;
+
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            //Debug.Log($"플레이어 hp를 {restoreHealth} 충전한다");
+            //플레이어가 충돌하면 Damageable 컴포넌트 찾아서
+            //
+            Damageable damageable = collision.GetComponent<Damageable>();
+            if (damageable)
+            {
+                bool isHeal = damageable.Heal(restoreHealth);
+                //아이템 킬 판단
+                if (isHeal)
+                {
+                    //사운드 효과 -소리가 왜 안나 ㅜㅜ
+                    //의심가는 점: 혹시 재생이 끝나기 전에 Destroy되면 소리가 짤리나?
+                    if(pickupSource)
+                    {
+                        Debug.Log("재생됨");
+                        pickupSource.PlayOneShot(pickupSource.clip);
+                    }
+                    else
+                    {
+                        Debug.Log("재생안됨");
+                    }
+
+                    //collider disable, renderer
+                    Destroy(gameObject);  //Destroy(gameObject, pickupSource.clip.length); <<이렇게 해도되는데 귀찮
+                }
+            }
+        }
+        #endregion
+    }
+
+}

@@ -81,6 +81,9 @@ namespace My2D
                 animator.SetBool(AnimationString.lockVelocity, value);
             }
         }
+
+        //hp 풀 체크
+        public bool IsHealthFull => CurrentHealth >= MaxHealth;
         #endregion
 
         #region Unity Event Method
@@ -107,6 +110,7 @@ namespace My2D
         #endregion
 
         #region Custom Method
+        //Health 가산
         //매개변수로 대미지량과 뒤로 밀리는 값을 받아온다
         public bool TakeDamage(float damage, Vector2 knockback)
         {
@@ -124,13 +128,16 @@ namespace My2D
             animator.SetTrigger(AnimationString.hitTrigger);
             LockVelocity = true;
 
-            //델리게이트 함수에 등록된 함수들 호출
+            //효과: SFX, VFX, 넉백효과, UI효과
+            //델리게이트 함수에 등록된 함수들 호출: 효과 연출에 필요한 함수 등록
             /* if (hitAction != null)
              {
                  hitAction.Invoke(damage, knockback);
              }*/
             hitAction?.Invoke(damage, knockback);
 
+            //UI 효과 - 대미지text 프리팹 생성하는 함수가 등록된 이벤트 함수 호출
+            CharacterEvents.characterDamaged?.Invoke(gameObject, damage);
 
             return true;
         }
@@ -139,6 +146,30 @@ namespace My2D
         {
             IsDeath = true;
             animator.SetBool(AnimationString.isDeath, true);
+        }
+
+        //Health 가산 - 매개변수만큼 Health 충전
+        //health를 실질적으로 충전하면 참을 반환, 충전하지 않았다면 거짓반환.
+        public bool Heal(float healAmount)
+        {
+            //죽음 체크
+            if (IsDeath || IsHealthFull)
+            {
+                return false;
+            }
+            
+
+            CurrentHealth += healAmount;
+            if (CurrentHealth > maxHealth)
+            {
+                CurrentHealth = maxHealth;
+            }
+            Debug.Log($"CurrentHealth: {CurrentHealth}");
+
+            //UI 효과
+            CharacterEvents.characterHealed?.Invoke(gameObject, healAmount);
+
+            return true;
         }
         #endregion
     }
