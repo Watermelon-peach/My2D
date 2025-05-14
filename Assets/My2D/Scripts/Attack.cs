@@ -24,12 +24,12 @@ namespace My2D
             if (damageable != null)
             {
                 //공격하는 방향에 따라 밀리는 방향 설정
-                Vector2 deliveredknockback = this.transform.parent.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
-                bool isHit = damageable.TakeDamage(attackDamage, deliveredknockback);
+                Vector2 deliveredKnockback = this.transform.parent.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
+                bool isHit = damageable.TakeDamage(attackDamage, deliveredKnockback);
 
                 if (isHit)
                 {
-                    Debug.Log(collision.name + "hit for" + attackDamage);
+                    //Debug.Log(collision.name + "hit for" + attackDamage);
                 }
             }
         }

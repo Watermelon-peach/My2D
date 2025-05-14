@@ -218,6 +218,13 @@ namespace My2D
             }
         }
 
+        public void OnBowAttack(InputAction.CallbackContext context)
+        {
+            if (context.started && touchingDirection.IsGround)
+            {
+                animator.SetTrigger(AnimationString.bowAttackTrigger);
+            }
+        }
         //반전, 바라보는 방향 전환 - 입력값에 따라
         void SetFacingDirection(Vector2 moveInput)
         {

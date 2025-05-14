@@ -46,12 +46,7 @@ namespace My2D
                     //의심가는 점: 혹시 재생이 끝나기 전에 Destroy되면 소리가 짤리나?
                     if(pickupSource)
                     {
-                        Debug.Log("재생됨");
                         pickupSource.PlayOneShot(pickupSource.clip);
-                    }
-                    else
-                    {
-                        Debug.Log("재생안됨");
                     }
 
                     //collider disable, renderer

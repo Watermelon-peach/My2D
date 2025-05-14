@@ -118,7 +118,7 @@ namespace My2D
                 return false;
 
             CurrentHealth -= damage;
-            Debug.Log($"CurrentHealth : {CurrentHealth}");
+            //Debug.Log($"CurrentHealth : {CurrentHealth}");
 
             //무적 모드 셋팅 - 타이머 초기화
             isInvincible = true;
@@ -137,6 +137,7 @@ namespace My2D
             hitAction?.Invoke(damage, knockback);
 
             //UI 효과 - 대미지text 프리팹 생성하는 함수가 등록된 이벤트 함수 호출
+            //Health Text, Health Bar 관련함수 호출
             CharacterEvents.characterDamaged?.Invoke(gameObject, damage);
 
             return true;
@@ -162,11 +163,13 @@ namespace My2D
             CurrentHealth += healAmount;
             if (CurrentHealth > maxHealth)
             {
+                healAmount -= CurrentHealth - maxHealth;
                 CurrentHealth = maxHealth;
             }
-            Debug.Log($"CurrentHealth: {CurrentHealth}");
+            //Debug.Log($"CurrentHealth: {CurrentHealth}");
 
-            //UI 효과
+            //UI 효과 - 힐text 프리팹 생성하는 팜수가 등록된 이벤트 함수 호출
+            //Health Text, Health Bar 관련함수 호출
             CharacterEvents.characterHealed?.Invoke(gameObject, healAmount);
 
             return true;
