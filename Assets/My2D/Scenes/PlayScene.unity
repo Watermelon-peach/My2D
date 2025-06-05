@@ -795,6 +795,7 @@ GameObject:
   - component: {fileID: 479614896}
   - component: {fileID: 479614897}
   - component: {fileID: 479614898}
+  - component: {fileID: 479614899}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1118,6 +1119,25 @@ MonoBehaviour:
   animator: {fileID: 1696144877}
   maxHealth: 100
   invincibleTime: 3
+--- !u!114 &479614899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479614891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631aab615e82b124181d0783894e7d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostMaterial: {fileID: 2100000, guid: f4440df727bb64c41b953c525be7c092, type: 2}
+  trailActiveTime: 1
+  trailRefreshRate: 0.1
+  trailDestroyDelay: 1
+  alphaRefreshRate: 0.1
+  alphaRefreshValue: 0.1
+  playerRenderer: {fileID: 1696144876}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

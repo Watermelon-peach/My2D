@@ -15,6 +15,8 @@ namespace My2D
         private TouchingDirection touchingDirection;
         //대미지
         private Damageable damageable;
+        //트레일 이펙트
+        private TrailEffect trailEffect;
 
         //이동
         //걷는 속도 - 좌우로 걷는다
@@ -145,6 +147,8 @@ namespace My2D
             damageable = this.GetComponent<Damageable>();
             //델리게이트 함수 등록
             damageable.hitAction += OnHit;
+
+            trailEffect = GetComponent<TrailEffect>();
         }
 
         private void FixedUpdate()
@@ -191,6 +195,7 @@ namespace My2D
             if (context.started)    //button down
             {
                 IsRunning = true;
+                trailEffect.StartActiveTrail();
             }
             else if (context.canceled)  //button up
             {
@@ -207,6 +212,12 @@ namespace My2D
 
                 //애니메이션
                 animator.SetTrigger(AnimationString.jumpTrigger);
+
+                //잔상효과
+                if (trailEffect)
+                {
+                    trailEffect.StartActiveTrail();
+                }
             }
             
         }
